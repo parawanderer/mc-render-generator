@@ -51,7 +51,7 @@ class MinecraftSkin {
 
 
 
-    getRender = async () => {
+    getRender = () => {
         // use multiples of 60 for "base" height, then scale down...
         const ctx = this._ctx;
         const canvas = this._canvas;
@@ -67,7 +67,7 @@ class MinecraftSkin {
         this.side = drawSide;
 
         // get render in multiples of 60 (most accturate/good looking math)
-        const upscaleImage = await this._internalGetRender();
+        const upscaleImage = this._internalGetRender();
 
         const [finalWidth,finalHeight] = [this.imageWidth, this.imageWidth*2.05];
 
@@ -81,7 +81,7 @@ class MinecraftSkin {
         return canvas.toBuffer();
     }
 
-    getHead = async () => {
+    getHead = () => {
         // use multiples of 60 for "base" height, then scale down...
         const ctx = this._ctx;
         const canvas = this._canvas;
@@ -97,7 +97,7 @@ class MinecraftSkin {
         this.side = drawSide;
 
         // get render in multiples of 60 (most accturate/good looking math)
-        const upscaleImage = await this._internalGetHead();
+        const upscaleImage = this._internalGetHead();
 
 
         const [finalWidth,finalHeight] = [this.imageWidth,this.imageWidth];
