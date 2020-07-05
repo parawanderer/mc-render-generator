@@ -48,7 +48,7 @@ module.exports = (app) => {
 
             const skin = new MinecraftSkin(file.buffer, isAlex, size);
 
-            const headBuffer = await skin.getHead();
+            const headBuffer = skin.getHead();
 
             res.set('Content-Type', 'image/png');
             res.send(headBuffer);
@@ -83,7 +83,7 @@ module.exports = (app) => {
 
             const skin = new MinecraftSkin(file.buffer, isAlex, size);
 
-            const skinBuffer = await skin.getRender();
+            const skinBuffer = skin.getRender();
 
             res.set('Content-Type', 'image/png');
             res.send(skinBuffer);
