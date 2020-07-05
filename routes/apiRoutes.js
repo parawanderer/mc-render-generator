@@ -23,7 +23,7 @@ module.exports = (app) => {
     });
 
 
-    
+
     app.post('/head', 
     upload.single('file'),
     async (req, res) => {
@@ -35,6 +35,7 @@ module.exports = (app) => {
         const {body, file} = req;
 
         if (!file) return res.status(GENERIC_400.status).send({...GENERIC_400, description: 'No skin file provided!'});
+        if (file.mimetype !== 'image/png') return res.status(GENERIC_400.status).send({...GENERIC_400, description: 'Invalid file type. Expected image/png got ' + file.mimetype});
 
         const size = req.query.size ? parseInt(req.query.size) : 120;
 
@@ -69,6 +70,7 @@ module.exports = (app) => {
         const {body, file} = req;
 
         if (!file) return res.status(GENERIC_400.status).send({...GENERIC_400, description: 'No skin file provided!'});
+        if (file.mimetype !== 'image/png') return res.status(GENERIC_400.status).send({...GENERIC_400, description: 'Invalid file type. Expected image/png got ' + file.mimetype});
 
         const size = req.query.size ? parseInt(req.query.size) : 120;
 
